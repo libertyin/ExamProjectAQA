@@ -21,7 +21,6 @@ public class SignInTests extends BaseItPlatform {
         signInPage.fillEmail();
         signInPage.fillPassword();
     }
-
     @AfterMethod
     public void closeBrowser() {
         Selenide.closeWebDriver();
