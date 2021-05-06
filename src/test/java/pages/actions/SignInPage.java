@@ -24,4 +24,9 @@ public class SignInPage extends SignInPageLocators {
         CustomLogger.logger.info("ok");
     }
 
+    @Step("Redirect to Registration page")
+    public void clickRegistrationLink(){
+        linkRegistration.click();
+        CustomLogger.logger.info("ok");
+    }
 }

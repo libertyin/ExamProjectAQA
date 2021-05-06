@@ -9,4 +9,6 @@ public class SignInPageLocators {
     public SelenideElement inputEmail = $(byXpath("//input[@id='user_login']"));
     public SelenideElement inputPassword = $(byXpath("//input[@id='user_pass']"));
     public SelenideElement buttonSignIn = $(byXpath("//button[@class='tml-button']"));
+    public SelenideElement linkRegistration = $(byXpath("//a[@href='https://it-platforma.website/register/']"));
+
 }
