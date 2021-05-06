@@ -25,4 +25,6 @@ public class SignInTests extends BaseItPlatform {
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }
+
+
 }
