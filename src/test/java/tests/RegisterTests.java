@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
+import data.Users;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,12 +19,12 @@ public class RegisterTests extends BaseItPlatform {
 
     @Test
     public void checkRegisterHappyPass() {
-       mainPage.clickSignIn();
+       mainPage.clickSignInLink();
        signInPage.clickRegistrationLink();
-       registerPage.fillName();
-       registerPage.fillEmail();
-       registerPage.fillPassword();
-       registerPage.fillRepeatPassword();
+       registerPage.fillName(Users.USER_1.getFirstName(), Users.USER_1.getLastName());
+       registerPage.fillEmail(Users.USER_1.getEmail());
+       registerPage.fillPassword(Users.USER_1.getPassword());
+       registerPage.fillRepeatPassword(Users.USER_1.getPassword());
        registerPage.clickRegisterButton();
        mainPage.checkMyProfileLink();
        sleep(100);

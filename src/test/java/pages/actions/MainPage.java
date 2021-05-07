@@ -8,7 +8,7 @@ import pages.locators.MainPageLocators;
 public class MainPage extends MainPageLocators {
 
     @Step("Click Sign in button")
-    public void clickSignIn(){
+    public void clickSignInLink(){
       buttonSignIn.click();
       CustomLogger.logger.info("ok");
     }

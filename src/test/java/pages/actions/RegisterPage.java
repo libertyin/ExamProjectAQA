@@ -6,26 +6,26 @@ import pages.locators.RegisterPageLocators;
 
 public class RegisterPage extends RegisterPageLocators {
     @Step("Fill name field")
-    public void fillName(){
-        inputName.sendKeys("Ivan Ivanov2");
+    public void fillName(String firstName, String lastName){
+        inputName.sendKeys(firstName, lastName);
         CustomLogger.logger.info("ok");
     }
 
     @Step("Fill email field")
-    public void fillEmail(){
-        inputEmail.sendKeys("ivan.ivanov2@gmail.com");
+    public void fillEmail(String email){
+        inputEmail.sendKeys(email);
         CustomLogger.logger.info("ok");
     }
 
     @Step("Fill password field")
-    public void fillPassword(){
-        inputPassword.sendKeys("qwerty1234!@2");
+    public void fillPassword(String password){
+        inputPassword.sendKeys(password);
         CustomLogger.logger.info("ok");
     }
 
     @Step("Fill repeat password field")
-    public void fillRepeatPassword(){
-        inputRepeatPassword.sendKeys("qwerty1234!@2");
+    public void fillRepeatPassword(String password){
+        inputRepeatPassword.sendKeys(password);
         CustomLogger.logger.info("ok");
     }
 

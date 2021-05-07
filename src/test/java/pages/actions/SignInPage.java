@@ -7,14 +7,14 @@ import pages.locators.SignInPageLocators;
 public class SignInPage extends SignInPageLocators {
 
     @Step("Fill email field")
-    public void fillEmail(){
-        inputEmail.sendKeys("ivan.inanov@gmail.com");
+    public void fillEmail(String email){
+        inputEmail.sendKeys(email);
         CustomLogger.logger.info("ok");
     }
 
     @Step("Fill password field")
-    public void fillPassword(){
-        inputPassword.sendKeys("12345");
+    public void fillPassword(String password){
+        inputPassword.sendKeys(password);
         CustomLogger.logger.info("ok");
     }
 
