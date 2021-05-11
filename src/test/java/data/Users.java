@@ -2,8 +2,8 @@ package data;
 
 public enum Users {
 
-    USER_1("autotest.test@gmail.com", "qwerty", "Ivan ", "Kurochkin"),
-    USER_2("autotest2.test@gmail.com", "qwerty", "Ivan ", "Kurochkin");
+    USER_POSITIVE("autotest.test1234@gmail.com", "qwertyui", "Ivan ", "Kurochkin1"),
+    USER_NEGATIVE("autotest2.testgmail.com", "qwerty2", "Ivan ", "Kurochkin2");
 
     private final String email;
     private final String password;

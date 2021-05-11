@@ -17,15 +17,32 @@ public class SignInTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
-    @Test
+    @Test (groups = "SignIn:positive")
     public void checkSignInHappyPass() {
         mainPage.clickSignInLink();
-        signInPage.fillEmail(Users.USER_1.getEmail());
-        signInPage.fillPassword(Users.USER_1.getPassword());
+        signInPage.fillEmail(Users.USER_POSITIVE.getEmail());
+        signInPage.fillPassword(Users.USER_POSITIVE.getPassword());
         signInPage.clickSignIn();
         mainPage.checkMyProfileLink();
-        sleep(100000);
     }
+
+    @Test (groups = "SignIn:negative")
+    public void checkSignInEmptyWarnings() {
+        mainPage.clickSignInLink();
+        signInPage.clickSignIn();
+        signInPage.checkWarningEmptyName();
+        signInPage.checkWarningEmptyPassword();
+    }
+
+    @Test (groups = "SignIn:negative")
+    public void checkUnknownNameWarnings() {
+        mainPage.clickSignInLink();
+        signInPage.fillEmail(Users.USER_NEGATIVE.getEmail());
+        signInPage.fillPassword(Users.USER_NEGATIVE.getPassword());
+        signInPage.clickSignIn();
+        signInPage.checkWarningUnknownName();
+    }
+
     @AfterMethod
     public void closeBrowser() {
         Selenide.closeWebDriver();

@@ -17,17 +17,51 @@ public class RegisterTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
-    @Test
+    @Test (groups = "Registration:positive", priority = 0)
     public void checkRegisterHappyPass() {
        mainPage.clickSignInLink();
        signInPage.clickRegistrationLink();
-       registerPage.fillName(Users.USER_1.getFirstName(), Users.USER_1.getLastName());
-       registerPage.fillEmail(Users.USER_1.getEmail());
-       registerPage.fillPassword(Users.USER_1.getPassword());
-       registerPage.fillRepeatPassword(Users.USER_1.getPassword());
+       registerPage.fillName(Users.USER_POSITIVE.getFirstName(), Users.USER_POSITIVE.getLastName());
+       registerPage.fillEmail(Users.USER_POSITIVE.getEmail());
+       registerPage.fillPassword(Users.USER_POSITIVE.getPassword());
+       registerPage.fillRepeatPassword(Users.USER_POSITIVE.getPassword());
        registerPage.clickRegisterButton();
        mainPage.checkMyProfileLink();
-       sleep(100);
+    }
+
+    @Test(groups = "Registration:negative")
+    public void checkRegisterEmptyWarnings(){
+        mainPage.clickSignInLink();
+        signInPage.clickRegistrationLink();
+        registerPage.clickRegisterButton();
+        registerPage.checkWarningEmptyName();
+        registerPage.checkWarningEmptyEmail();
+        registerPage.checkWarningEmptyPassword();
+    }
+
+    @Test(groups = "Registration:negative")
+    public void checkRegisterErrorWarnings(){
+        mainPage.clickSignInLink();
+        signInPage.clickRegistrationLink();
+        registerPage.fillName(Users.USER_NEGATIVE.getFirstName(), Users.USER_NEGATIVE.getLastName());
+        registerPage.fillEmail(Users.USER_NEGATIVE.getEmail());
+        registerPage.fillPassword(Users.USER_NEGATIVE.getPassword());
+        registerPage.fillRepeatPassword(Users.USER_POSITIVE.getPassword());
+        registerPage.clickRegisterButton();
+        registerPage.checkWarningEmailWrongAddress();
+        registerPage.checkWarningPasswordDoNotMatch();
+    }
+
+    @Test(groups = "Registration:negative")
+    public void checkRegisterSameEmail(){
+        mainPage.clickSignInLink();
+        signInPage.clickRegistrationLink();
+        registerPage.fillName(Users.USER_POSITIVE.getFirstName(), Users.USER_POSITIVE.getLastName());
+        registerPage.fillEmail(Users.USER_POSITIVE.getEmail());
+        registerPage.fillPassword(Users.USER_POSITIVE.getPassword());
+        registerPage.fillRepeatPassword(Users.USER_POSITIVE.getPassword());
+        registerPage.clickRegisterButton();
+        registerPage.checkWarningSameEmail();
     }
 
     @AfterMethod
