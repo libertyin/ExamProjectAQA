@@ -5,13 +5,11 @@ import io.qameta.allure.Step;
 import logger.CustomLogger;
 import pages.locators.MainPageLocators;
 
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
+
 public class MainPage extends MainPageLocators {
 
-    @Step("Click Sign in button")
-    public void clickSignInLink(){
-      buttonSignIn.click();
-      CustomLogger.logger.info("ok");
-    }
 
     @Step("Check for Profile link to exist")
     public void checkMyProfileLink(){
@@ -19,9 +17,11 @@ public class MainPage extends MainPageLocators {
         CustomLogger.logger.info("ok");
     }
 
-
-
-
-
+    //menu
+    @Step("Click the menu link")
+    public void clickMenuLink(String linkHref){
+        $(byXpath(prepareLinkLocator + linkHref + "']")).click();
+        CustomLogger.logger.info("ok");
+    }
 
 }

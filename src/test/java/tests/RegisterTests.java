@@ -19,7 +19,7 @@ public class RegisterTests extends BaseItPlatform {
 
     @Test (groups = "Registration:positive", priority = 0)
     public void checkRegisterHappyPass() {
-       mainPage.clickSignInLink();
+       mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
        signInPage.clickRegistrationLink();
        registerPage.fillName(Users.USER_POSITIVE.getFirstName(), Users.USER_POSITIVE.getLastName());
        registerPage.fillEmail(Users.USER_POSITIVE.getEmail());
@@ -31,7 +31,7 @@ public class RegisterTests extends BaseItPlatform {
 
     @Test(groups = "Registration:negative")
     public void checkRegisterEmptyWarnings(){
-        mainPage.clickSignInLink();
+        mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
         registerPage.clickRegisterButton();
         registerPage.checkWarningEmptyName();
@@ -41,7 +41,7 @@ public class RegisterTests extends BaseItPlatform {
 
     @Test(groups = "Registration:negative")
     public void checkRegisterErrorWarnings(){
-        mainPage.clickSignInLink();
+        mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
         registerPage.fillName(Users.USER_NEGATIVE.getFirstName(), Users.USER_NEGATIVE.getLastName());
         registerPage.fillEmail(Users.USER_NEGATIVE.getEmail());
@@ -54,7 +54,7 @@ public class RegisterTests extends BaseItPlatform {
 
     @Test(groups = "Registration:negative")
     public void checkRegisterSameEmail(){
-        mainPage.clickSignInLink();
+        mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
         registerPage.fillName(Users.USER_POSITIVE.getFirstName(), Users.USER_POSITIVE.getLastName());
         registerPage.fillEmail(Users.USER_POSITIVE.getEmail());

@@ -2,7 +2,7 @@ package data;
 
 public enum Users {
 
-    USER_POSITIVE("autotest.test1234@gmail.com", "qwertyui", "Ivan ", "Kurochkin1"),
+    USER_POSITIVE("autotest.test1234@gmail.com", "qwerty1", "Ivan ", "Kurochkin1"),
     USER_NEGATIVE("autotest2.testgmail.com", "qwerty2", "Ivan ", "Kurochkin2");
 
     private final String email;
