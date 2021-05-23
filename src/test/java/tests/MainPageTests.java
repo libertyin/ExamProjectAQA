@@ -2,14 +2,14 @@ package tests;
 
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
-import data.Users;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BaseItPlatform;
 
-import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.open;
+import static pages.actions.general.CommonSteps.checkUrl;
 
 public class MainPageTests extends BaseItPlatform {
 
@@ -18,25 +18,31 @@ public class MainPageTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
-    @Test
-    public void checkMenuBrokenLinks() {
-        mainPage.clickMenuLink(ProjectUrls.MENU_YOUR_OBJECTIVE.getUrl());
-        commonSteps.checkUrl(ProjectUrls.MENU_YOUR_OBJECTIVE.getUrl());
-        back();
-        mainPage.clickMenuLink(ProjectUrls.MENU_ACHIEVE_YOUR_GOAL.getUrl());
-        commonSteps.checkUrl(ProjectUrls.MENU_ACHIEVE_YOUR_GOAL.getUrl());
-        back();
-        mainPage.clickMenuLink(ProjectUrls.MENU_CHOOSE_YOUR_PACK.getUrl());
-        commonSteps.checkUrl(ProjectUrls.MENU_CHOOSE_YOUR_PACK.getUrl());
-        back();
-        mainPage.clickMenuLink(ProjectUrls.MENU_PRICING.getUrl());
-        commonSteps.checkUrl(ProjectUrls.MENU_PRICING.getUrl());
-        back();
-        mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
-        commonSteps.checkUrl(ProjectUrls.MENU_SIGN_IN.getUrl());
+    @DataProvider
+    public Object[][] menuLinksProvider() {
+        return new Object[][]{
+                {"https://5element.ua/"}, {"https://5element.ua/about/special_offer/"}, {"https://5element.ua/shedule/"},
+                {"https://5element.ua/klubnye-karty/"}, {"https://it-platforma.website/login/"}
+        };
     }
 
-    @AfterMethod
+    @Test(dataProvider = "menuLinksProvider")
+    public void checkMenuBrokenLinks(String link) {
+        mainPage.clickMenuLink(link);
+        checkUrl(link);
+    }
+
+    @Test
+    void checkSearchHappyPass() {
+
+    }
+
+    @Test
+    public void checkRecentPosts() {
+        mainPage.clickRecentPost();
+    }
+
+    @AfterClass
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }

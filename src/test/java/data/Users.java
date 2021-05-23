@@ -2,8 +2,8 @@ package data;
 
 public enum Users {
 
-    USER_POSITIVE("autotest.test1234@gmail.com", "qwerty1", "Ivan ", "Kurochkin1"),
-    USER_NEGATIVE("autotest2.testgmail.com", "qwerty2", "Ivan ", "Kurochkin2");
+    USER_REGISTERED("test.test@gmail.com", "qwerty", "Ivan", " Kurochkin"),
+    USER_NEGATIVE("autotest2.testgmail.com", "asdfg", "Ivan", " Kurochkin");
 
     private final String email;
     private final String password;
@@ -32,6 +32,8 @@ public enum Users {
     public String getLastName() {
         return lastName;
     }
+
+
 
 
 }

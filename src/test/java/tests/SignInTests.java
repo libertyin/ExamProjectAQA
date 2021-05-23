@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import pages.BaseItPlatform;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class SignInTests extends BaseItPlatform {
     @BeforeMethod
@@ -20,8 +19,8 @@ public class SignInTests extends BaseItPlatform {
     @Test (groups = "SignIn:positive")
     public void checkSignInHappyPass() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
-        signInPage.fillEmail(Users.USER_POSITIVE.getEmail());
-        signInPage.fillPassword(Users.USER_POSITIVE.getPassword());
+        signInPage.fillEmail(Users.USER_REGISTERED.getEmail());
+        signInPage.fillPassword(Users.USER_REGISTERED.getPassword());
         signInPage.clickSignIn();
         mainPage.checkMyProfileLink();
     }

@@ -12,9 +12,9 @@ import java.util.List;
 public class CsvWorker {
 
     @Step
-    public static void writeToCSVFile(String name, String email, String password, boolean append) throws IOException {
-        String[] data = new String[]{name, email, password};
-        String pathToCSV = "src/test/java/data/users/Users.csv";
+    public static void writeToCSVFile(String firstName, String secondName, String email, String password, boolean append) throws IOException {
+        String[] data = new String[]{firstName,secondName, email, password};
+        String pathToCSV = "src/test/java/data/Users.csv";
         try (CSVWriter write = new CSVWriter(
                 new FileWriter(pathToCSV, append),
                 '‡',
