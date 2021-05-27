@@ -11,8 +11,14 @@ public class MainPageLocators {
     public SelenideElement searchField = $(byXpath("//input[@type=\"search\"]"));
 
     public String prepareLinkLocator = "//a[@href='";
+
     //resent post
+    public SelenideElement firstPost = $(byXpath("//div[@id=\"right-sidebar-inner\"]//li[1]/a"));
     public String prepareResentPost = "//div[@id=\"recent-posts-2\"]//ul//li";
 
+    //search
+    public String searchResults = "//div[@id=\"content\"]/article ";
+    public String prepareXPathSearchResult = "//div[@id=\"content\"]/article[";
+    public SelenideElement searchResultsNotFound = $(byXpath("//div[@class=\"page-content\"]/p"));
 
 }

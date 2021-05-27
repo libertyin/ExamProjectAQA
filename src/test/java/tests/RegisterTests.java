@@ -3,10 +3,7 @@ package tests;
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
 import data.Users;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.BaseItPlatform;
 import utils.ExcelWorker;
 
@@ -87,7 +84,7 @@ public class RegisterTests extends BaseItPlatform {
         registerPage.checkWarningSameEmail();
     }
 
-    @AfterMethod
+    @AfterClass
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }

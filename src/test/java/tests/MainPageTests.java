@@ -18,6 +18,7 @@ public class MainPageTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
+    //link tests
     @DataProvider
     public Object[][] menuLinksProvider() {
         return new Object[][]{
@@ -32,11 +33,22 @@ public class MainPageTests extends BaseItPlatform {
         checkUrl(link);
     }
 
+    //search Tests
     @Test
-    void checkSearchHappyPass() {
-
+    void checkSearchPositive() {
+        mainPage.fillSearch("Litera");
+        mainPage.submitSearch();
+        mainPage.checkForSearchResultsExist("Litera");
     }
 
+    @Test
+    void checkSearchNegative() {
+        mainPage.fillSearch("qwerty");
+        mainPage.submitSearch();
+        mainPage.checkForSearchResultsNotExist("qwerty");
+    }
+
+    //Recent Posts tests
     @Test
     public void checkRecentPosts() {
         mainPage.clickRecentPost();
