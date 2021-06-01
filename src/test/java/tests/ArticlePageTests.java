@@ -19,7 +19,7 @@ public class ArticlePageTests extends BaseItPlatform {
 
     //Comments tests
     @Test
-    void checkCommentsPositive() {
+    void checkCommentsHappyPass() {
         mainPage.clickTheFirstPost();
         articlePage.fillCommentAreaWithTempComment();
         articlePage.fillName(Users.USER_REGISTERED.getFirstName());
@@ -44,6 +44,21 @@ public class ArticlePageTests extends BaseItPlatform {
         articlePage.fillEmail(Users.USER_NEGATIVE.getEmail());
         articlePage.clickSubmitComment();
         articlePage.checkForCommentIncorrectEmailError();
+    }
+
+    //Recent Posts tests
+    @Test
+    public void checkRecentPostTitle() {
+        articlePage.checkRecentPostTitle(5);
+    }
+
+    @Test
+    public void checkRecentPostHasElements() {
+        articlePage.clickAnyRecentPost(5);
+        articlePage.checkArticleImg();
+        articlePage.checkArticleTitle();
+        articlePage.checkArticleMeta();
+        articlePage.checkArticleContent();
     }
 
     @AfterClass

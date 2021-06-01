@@ -34,7 +34,7 @@ public class RegisterTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
-    @Test(groups = "Registration:positive", priority = 0)
+    @Test
     public void checkRegisterHappyPass() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
@@ -49,7 +49,7 @@ public class RegisterTests extends BaseItPlatform {
         excelWorker.writeToExistingExcelFile(excelFilePath, allData);
     }
 
-    @Test(groups = "Registration:negative")
+    @Test
     public void checkRegisterEmptyWarnings() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
@@ -59,7 +59,7 @@ public class RegisterTests extends BaseItPlatform {
         registerPage.checkWarningEmptyPassword();
     }
 
-    @Test(groups = "Registration:negative")
+    @Test
     public void checkRegisterErrorWarnings() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();
@@ -72,7 +72,8 @@ public class RegisterTests extends BaseItPlatform {
         registerPage.checkWarningPasswordDoNotMatch();
     }
 
-    @Test(groups = "Registration:negative")
+    //the user with such email is already exist
+    @Test
     public void checkRegisterSameEmail() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickRegistrationLink();

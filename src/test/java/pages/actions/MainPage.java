@@ -1,9 +1,9 @@
 package pages.actions;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import logger.CustomLogger;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import pages.locators.MainPageLocators;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static global.Global.globalRandomLetters;
 import static pages.actions.general.CommonSteps.getAndAttachScreenshot;
 
 public class MainPage extends MainPageLocators {
@@ -78,16 +77,6 @@ public class MainPage extends MainPageLocators {
         CustomLogger.logger.info("ok");
     }
 
-    //recent posts
-    @Step("Calculate the Recent posts")
-    public void clickRecentPost() {
-        int xpathCount = $$(byXpath(prepareResentPost)).size();
-        if (xpathCount > 0) {
-            for (int i = 1; i < xpathCount+1; i++) {
-                arrayList.add(prepareResentPost + "[" + i + "]");
-            }
-        }
-    }
 }
 
 

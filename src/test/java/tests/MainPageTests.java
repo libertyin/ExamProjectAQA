@@ -35,24 +35,19 @@ public class MainPageTests extends BaseItPlatform {
 
     //search Tests
     @Test
-    void checkSearchPositive() {
+    void checkSearchHappyPass() {
         mainPage.fillSearch("Litera");
         mainPage.submitSearch();
         mainPage.checkForSearchResultsExist("Litera");
     }
 
     @Test
-    void checkSearchNegative() {
+    void checkSearchWithNegativeData() {
         mainPage.fillSearch("qwerty");
         mainPage.submitSearch();
         mainPage.checkForSearchResultsNotExist("qwerty");
     }
 
-    //Recent Posts tests
-    @Test
-    public void checkRecentPosts() {
-        mainPage.clickRecentPost();
-    }
 
     @AfterClass
     public void closeBrowser() {

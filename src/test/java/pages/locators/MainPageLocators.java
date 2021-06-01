@@ -12,9 +12,8 @@ public class MainPageLocators {
 
     public String prepareLinkLocator = "//a[@href='";
 
-    //resent post
+    //first resent post
     public SelenideElement firstPost = $(byXpath("//div[@id=\"right-sidebar-inner\"]//li[1]/a"));
-    public String prepareResentPost = "//div[@id=\"recent-posts-2\"]//ul//li";
 
     //search
     public String searchResults = "//div[@id=\"content\"]/article ";

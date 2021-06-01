@@ -18,7 +18,7 @@ public class SignInTests extends BaseItPlatform {
         open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
     }
 
-    @Test (groups = "SignIn:positive")
+    @Test
     public void checkSignInHappyPass() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.fillEmail(Users.USER_REGISTERED.getEmail());
@@ -27,7 +27,7 @@ public class SignInTests extends BaseItPlatform {
         mainPage.checkMyProfileLink();
     }
 
-    @Test (groups = "SignIn:negative")
+    @Test
     public void checkSignInEmptyWarnings() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.clickSignIn();
@@ -35,7 +35,7 @@ public class SignInTests extends BaseItPlatform {
         signInPage.checkWarningEmptyPassword();
     }
 
-    @Test (groups = "SignIn:negative")
+    @Test
     public void checkUnknownNameWarnings() {
         mainPage.clickMenuLink(ProjectUrls.MENU_SIGN_IN.getUrl());
         signInPage.fillEmail(Users.USER_NEGATIVE.getEmail());

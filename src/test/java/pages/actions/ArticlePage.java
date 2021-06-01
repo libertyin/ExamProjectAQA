@@ -1,12 +1,18 @@
 package pages.actions;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import logger.CustomLogger;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.Assert;
 import pages.locators.ArticlePageLocators;
+import java.util.Random;
 
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 import static global.Global.globalRandomLetters;
+import static pages.actions.general.CommonSteps.getAndAttachScreenshot;
 
 public class ArticlePage extends ArticlePageLocators {
 
@@ -53,6 +59,58 @@ public class ArticlePage extends ArticlePageLocators {
     @Step("Check for comment incorrect Email error to be present")
     public void checkForCommentIncorrectEmailError(){
         errorCommentsIncorrectEmail.shouldBe(Condition.visible);
+        CustomLogger.logger.info("ok");
+    }
+
+    //recent posts
+    @Step("Check title in all Recent posts equals")
+    public void checkRecentPostTitle(int numberOfRecentPosts) {
+        String resentPostsLinkText;
+        String resentPostsTitle;
+        for (int i = 1; i <= numberOfRecentPosts; i++) {
+            resentPostsLinkText  = $(byXpath(prepareResentPost + "[" + i + "]/a")).text();
+            SelenideElement resentPost = $(byXpath(prepareResentPost + "[" + i + "]/a"));
+            resentPost.click();
+            resentPostsTitle = $(byXpath(prepareArticleTitle)).text();
+            if(!(resentPostsLinkText.equals(resentPostsTitle))){
+                getAndAttachScreenshot();
+                Assert.fail("\nActual title of resent post: " + resentPostsTitle + "\n" + "Expected title of resent post: " + resentPostsTitle);
+            }else {
+                CustomLogger.logger.info("ok");
+            }
+        }
+    }
+
+    @Step("Click any of resent posts")
+    public void clickAnyRecentPost(int numberOfRecentPosts) {
+        Random rand = new Random();
+        int randomPost = rand.nextInt(numberOfRecentPosts)+1;
+        SelenideElement resentPost = $(byXpath(prepareResentPost + "[" + randomPost + "]/a"));
+        resentPost.click();
+        CustomLogger.logger.info("ok");
+    }
+
+    @Step("Check article image is exist")
+    public void checkArticleImg(){
+        articleImage.shouldBe(Condition.visible);
+        CustomLogger.logger.info("ok");
+    }
+
+    @Step("Check article title is exist")
+    public void checkArticleTitle(){
+        articleTitle.shouldBe(Condition.visible);
+        CustomLogger.logger.info("ok");
+    }
+
+    @Step("Check article meta is exist")
+    public void checkArticleMeta(){
+        articleMeta.shouldBe(Condition.visible);
+        CustomLogger.logger.info("ok");
+    }
+
+    @Step("Check article content is exist")
+    public void checkArticleContent(){
+        articleContent.shouldBe(Condition.visible);
         CustomLogger.logger.info("ok");
     }
 }
