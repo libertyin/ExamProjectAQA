@@ -19,9 +19,10 @@ public class SelenoidRunner {
         SelenoidConfig selenoidConfig = new SelenoidConfig();
         if(browserName.equalsIgnoreCase("firefox")){
             selenoidConfig.setUpConfigFirefox();
-        }else{
+        }else {
             selenoidConfig.setUpConfigChrome();
         }
+
     }
 
     @AfterMethod(alwaysRun = true)
