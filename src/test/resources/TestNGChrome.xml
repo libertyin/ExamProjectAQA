@@ -4,6 +4,7 @@
         <listener class-name="listener.CustomListener"/>
         <listener class-name="listener.RetryListener"/>
     </listeners>
+    <parameter name="browserName" value="chrome"/>
     <test name="Check IT Platform">
         <packages>
             <package name="tests"/>

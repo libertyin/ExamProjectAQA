@@ -2,10 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.BaseItPlatform;
 
 import static com.codeborne.selenide.Selenide.open;

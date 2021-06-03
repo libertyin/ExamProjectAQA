@@ -44,6 +44,7 @@ public class RegisterTests extends BaseItPlatform {
         registerPage.fillRepeatPassword(Users.USER_REGISTERED.getPassword());
         registerPage.clickRegisterButton();
         mainPage.checkMyProfileLink();
+        mainPage.exitProfile();
         //write to excel file registered users
         Object[] allData = new Object[] {globalFirstName,globalSecondName,globalEmail,Users.USER_REGISTERED.getPassword()};
         excelWorker.writeToExistingExcelFile(excelFilePath, allData);

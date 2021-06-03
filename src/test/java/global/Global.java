@@ -9,6 +9,4 @@ public class Global {
 
     //configuration
     public static boolean globalModeDebug = false;
-    public static String globalDevice = "";
-    public static boolean globalIsMobileDevice = false;
 }

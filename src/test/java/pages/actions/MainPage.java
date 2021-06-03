@@ -24,6 +24,12 @@ public class MainPage extends MainPageLocators {
         CustomLogger.logger.info("ok");
     }
 
+    @Step("Exit the profile")
+    public void exitProfile(){
+        exitProfileLink.click();
+        CustomLogger.logger.info("ok");
+    }
+
     //menu
     @Step("Click the menu link")
     public void clickMenuLink(String linkHref) {

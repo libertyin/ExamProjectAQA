@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class MainPageLocators {
 
     public SelenideElement linkMyProfile = $(byXpath("//a[@href='https://it-platforma.website/wp-admin/profile.php']"));
+    public SelenideElement exitProfileLink = $(byXpath("//ul[@class=\"tml-dashboard-links\"]//a[text()=\"Выйти\"]"));
     public SelenideElement searchField = $(byXpath("//input[@type=\"search\"]"));
 
     public String prepareLinkLocator = "//a[@href='";
