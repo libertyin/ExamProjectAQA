@@ -3,7 +3,9 @@ package tests;
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
 import data.Users;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.BaseItPlatform;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -63,4 +65,5 @@ public class ArticlePageTests extends BaseItPlatform {
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }
+
 }

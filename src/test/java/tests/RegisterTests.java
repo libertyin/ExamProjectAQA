@@ -3,7 +3,10 @@ package tests;
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
 import data.Users;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.BaseItPlatform;
 import utils.ExcelWorker;
 
@@ -21,10 +24,8 @@ public class RegisterTests extends BaseItPlatform {
     @BeforeClass
     public void prepareExelFile() throws IOException {
         File file = new File(excelFilePath);
-        if(file.exists() && !file.isDirectory()) {
-            return;
-        } else{
-            String[] headers = new String[] {"firstName", "secondName", "email", "password"};
+        if (!file.exists() && !file.isDirectory()) {
+            String[] headers = new String[]{"firstName", "secondName", "email", "password"};
             excelWorker.prepareExcelFile(excelFilePath, headers);
         }
     }
@@ -44,9 +45,13 @@ public class RegisterTests extends BaseItPlatform {
         registerPage.fillRepeatPassword(Users.USER_REGISTERED.getPassword());
         registerPage.clickRegisterButton();
         mainPage.checkMyProfileLink();
-        mainPage.exitProfile();
+
+        // TODO remove and use close web driver after method
+//        mainPage.exitProfile();
+
         //write to excel file registered users
-        Object[] allData = new Object[] {globalFirstName,globalSecondName,globalEmail,Users.USER_REGISTERED.getPassword()};
+        Object[] allData = new Object[]{globalFirstName, globalSecondName, globalEmail,
+                Users.USER_REGISTERED.getPassword()};
         excelWorker.writeToExistingExcelFile(excelFilePath, allData);
     }
 

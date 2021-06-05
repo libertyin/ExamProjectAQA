@@ -5,6 +5,7 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.Logs;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import static com.codeborne.selenide.WebDriverRunner.driver;
@@ -15,7 +16,7 @@ public class SelenoidRunner {
 
     @Parameters({"browserName"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(String browserName) {
+    public void setUp(@Optional("firefox") String browserName) {
         SelenoidConfig selenoidConfig = new SelenoidConfig();
         if(browserName.equalsIgnoreCase("firefox")){
             selenoidConfig.setUpConfigFirefox();

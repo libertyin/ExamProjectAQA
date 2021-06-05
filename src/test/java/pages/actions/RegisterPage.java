@@ -9,6 +9,7 @@ import pages.locators.RegisterPageLocators;
 import static global.Global.*;
 
 public class RegisterPage extends RegisterPageLocators {
+
     @Step("Fill name field")
     public void fillName(String firstName, String lastName) {
         inputName.sendKeys(firstName, lastName);

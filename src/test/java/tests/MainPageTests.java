@@ -19,8 +19,9 @@ public class MainPageTests extends BaseItPlatform {
     @DataProvider
     public Object[][] menuLinksProvider() {
         return new Object[][]{
-                {"https://5element.ua/"}, {"https://5element.ua/about/special_offer/"}, {"https://5element.ua/shedule/"},
-                {"https://5element.ua/klubnye-karty/"}, {"https://it-platforma.website/login/"}
+                {"https://5element.ua/"}, {"https://5element.ua/about/special_offer/"},
+                {"https://5element.ua/shedule/"}, {"https://5element.ua/klubnye-karty/"},
+                {"https://it-platforma.website/login/"}
         };
     }
 
@@ -42,12 +43,12 @@ public class MainPageTests extends BaseItPlatform {
     void checkSearchWithNegativeData() {
         mainPage.fillSearch("qwerty");
         mainPage.submitSearch();
-        mainPage.checkForSearchResultsNotExist("qwerty");
+        mainPage.checkForSearchResultsNotExist();
     }
-
 
     @AfterClass
     public void closeBrowser() {
         Selenide.closeWebDriver();
     }
+
 }

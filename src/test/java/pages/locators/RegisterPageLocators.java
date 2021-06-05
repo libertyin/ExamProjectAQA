@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RegisterPageLocators {
     //Register fields
-    public SelenideElement inputName = $(byXpath("//input[@id=\"user_login\"]"));
+    public SelenideElement inputName = $(byXpath("//input[@id='user_login']"));
     public SelenideElement inputEmail = $(byXpath("//input[@id=\"user_email\"]"));
     public SelenideElement inputPassword = $(byXpath("//input[@id=\"pass1\"]"));
     public SelenideElement inputRepeatPassword = $(byXpath("//input[@id=\"pass2\"]"));

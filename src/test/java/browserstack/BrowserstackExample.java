@@ -1,15 +1,24 @@
 package browserstack;
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import data.ProjectUrls;
+import io.qameta.allure.selenide.AllureSelenide;
+import logger.CustomLogger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 import java.net.URL;
+import java.util.logging.Level;
 
-import static java.lang.Thread.sleep;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
+import static pages.actions.general.CommonSteps.getAndAttachScreenshot;
 
 public class BrowserstackExample {
     public static final String USERNAME = "bsuser71747";
@@ -18,22 +27,41 @@ public class BrowserstackExample {
 
     @Test
     public void BrowserstackTest() throws Exception {
-        DesiredCapabilities caps = new DesiredCapabilities();
+        Configuration.reportsFolder = "target/screenshots";
+        Configuration.downloadsFolder = "target/build/downloads";
+        Configuration.baseUrl = "";
+        Configuration.timeout = 60000;
+        Configuration.clickViaJs = true;
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.proxyEnabled = false;
+        DesiredCapabilities dc = new DesiredCapabilities();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        dc.setCapability(ChromeOptions.CAPABILITY, options);
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        dc.setCapability("goog:loggingPrefs", logPrefs);
+        dc.setCapability("device", "iPhone 12 Pro");
+        dc.setCapability("os_version", "14");
+        dc.setCapability("browserstack.video", true);
+        dc.setCapability("realMobile", true);
+        dc.setCapability("acceptSslCerts", true);
+        dc.setCapability("browser", "chrome");
+        dc.setCapability("browser_version", "latest");
+        dc.setCapability("build", "Autotests");
+        dc.setCapability("project", "Autotests");
+        dc.setCapability("browserstack.console", "errors");
+        dc.setCapability("browserstack.networkLogs", true);
+        dc.setCapability("browserstack.idleTimeout", "300");
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+        WebDriver driver = new RemoteWebDriver(new URL(URL), dc);
+        setWebDriver(driver);
+        CustomLogger.logger.info("ok");
 
-        caps.setCapability("browserName", "iPhone");
-        caps.setCapability("device", "iPhone 12 Pro");
-        caps.setCapability("realMobile", "true");
-        caps.setCapability("os_version", "14");
-        caps.setCapability("name", "bsuser71747's First Test");
-
-        WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
-        driver.get("https://it-platforma.website/");
-        WebElement element = driver.findElement(By.xpath("//input[@type=\"search\"]"));
-        element.sendKeys("hello world");
-        element.submit();
-        sleep(500);
-        System.out.println(driver.getCurrentUrl());
-
-        driver.quit();
+//        test
+        open(ProjectUrls.IT_PLATFORM_WEBSITE.getUrl());
+        getAndAttachScreenshot();
+        CustomLogger.logger.info("ok");
     }
+
 }

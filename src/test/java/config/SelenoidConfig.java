@@ -49,12 +49,9 @@ public class SelenoidConfig {
 
     public void setUpConfigFirefox() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--disable-notifications");
-        LoggingPreferences logPrefs = new LoggingPreferences();
-        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        options.addPreference("dom.webnotifications.enabled", false);
+        Configuration.browserCapabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
         Configuration.startMaximized = true;
-        Configuration.browserCapabilities.setCapability("goog:loggingPrefs", logPrefs);
-        Configuration.browserCapabilities.setCapability("sessionTimeout", "1m");
         Configuration.pageLoadStrategy = "eager";
         Configuration.downloadsFolder = "target/build/downloads";
         Configuration.reportsFolder = "target/screenshots";
