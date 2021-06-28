@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Selenide;
 import data.ProjectUrls;
 import data.Users;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 import pages.BaseItPlatform;
 
