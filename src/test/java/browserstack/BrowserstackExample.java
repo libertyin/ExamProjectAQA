@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -27,6 +28,7 @@ public class BrowserstackExample {
         caps.setCapability("name", "bsuser71747's First Test");
 
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://it-platforma.website/");
         WebElement element = driver.findElement(By.xpath("//input[@type=\"search\"]"));
         element.sendKeys("hello world");

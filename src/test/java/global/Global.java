@@ -8,5 +8,5 @@ public class Global {
     public static String globalRandomLetters = "";
 
     //configuration
-    public static boolean globalModeDebug = false;
+    public static boolean globalModeDebug = true;
 }
