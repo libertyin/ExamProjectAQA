@@ -9,8 +9,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserstackConfig {
-    public static final String USERNAME = "bsuser71747";
-    public static final String AUTOMATE_KEY = "54UQLp7q7rXbeGqixxTs";
+    public static final String USERNAME = "annakyriienko_K2XrN7";
+    public static final String AUTOMATE_KEY = "Z8AQixMtZxHhzVNpYyn9";
     public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
     public void setUpConfigBrowserstack() throws Exception {
